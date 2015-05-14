@@ -14,3 +14,5 @@
 $app->get('/', function() use ($app) {
     return $app->welcome();
 });
+
+$app->post('op_infos/{op_info_id}/comments', 'App\Http\Controllers\OpInfoController@comment');

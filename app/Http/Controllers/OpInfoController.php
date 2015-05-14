@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use Request;
+use OpInfo;
 use OpInfoComment;
 use Laravel\Lumen\Routing\Controller as BaseController;
 

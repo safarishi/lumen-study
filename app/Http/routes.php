@@ -21,4 +21,4 @@ $app->get('op_infos/{op_info_id}/comments', 'App\Http\Controllers\OpInfoControll
 // assignment book abbr ab
 $app->post('ab/{ab_id}/comments', 'App\Http\Controllers\OpInfoController@abComment');
 // create a user
-$app->post('user', 'App\Http\Controllers\UserController@store');
+$app->post('user', ['middleware' => 'validation', 'uses' => 'App\Http\Controllers\UserController@store']);

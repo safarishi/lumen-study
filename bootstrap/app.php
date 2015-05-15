@@ -61,9 +61,9 @@ $app->singleton(
 //     // 'Laravel\Lumen\Http\Middleware\VerifyCsrfToken',
 // ]);
 
-// $app->routeMiddleware([
-
-// ]);
+$app->routeMiddleware([
+	'validation' => 'App\Http\Middleware\ValidationMiddleware',
+]);
 
 /*
 |--------------------------------------------------------------------------

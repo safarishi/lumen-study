@@ -34,6 +34,30 @@ class OpInfoController extends BaseController
 		DB::commit();
 		return $opInfoComment;
     }
+
+	/**
+	 *
+	 * @param  int $id
+	 */
+	public function comments($id)
+	{
 		// 临时存储数据库中查询的数据，在后面的foreach中使用
 		$tmp_data_arr = User::select('id', 'username', 'avatar')->get()->toArray();
+		// 要返回的数据
+		$datas = DB::table('op_info_comment')
+			->select('id', 'uid', 'content', 'op_info_id', 'created_at')
+			->where('op_info_id', $id)
+			->orderBy('created_at', 'desc')
+			->get();
+
+		foreach ($tmp_data_arr as $value) {
+			foreach ($datas as $_v) {
+				if ($_v->uid === $value['id']) {
+					$_v->user_name = $value['username'];
+					$_v->user_avatar = $value['avatar'];
+				}
+			}
+		}
+		return $datas;
+	}
 }

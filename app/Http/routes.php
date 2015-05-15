@@ -20,3 +20,5 @@ $app->post('op_infos/{op_info_id}/comments', 'App\Http\Controllers\OpInfoControl
 $app->get('op_infos/{op_info_id}/comments', 'App\Http\Controllers\OpInfoController@comments');
 // assignment book abbr ab
 $app->post('ab/{ab_id}/comments', 'App\Http\Controllers\OpInfoController@abComment');
+// create a user
+$app->post('user', 'App\Http\Controllers\UserController@store');

@@ -16,4 +16,7 @@ $app->get('/', function() use ($app) {
 });
 
 $app->post('op_infos/{op_info_id}/comments', 'App\Http\Controllers\OpInfoController@comment');
+
 $app->get('op_infos/{op_info_id}/comments', 'App\Http\Controllers\OpInfoController@comments');
+// assignment book abbr ab
+$app->post('ab/{ab_id}/comments', 'App\Http\Controllers\OpInfoController@abComment');

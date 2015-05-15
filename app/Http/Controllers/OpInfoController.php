@@ -60,4 +60,35 @@ class OpInfoController extends BaseController
 		}
 		return $datas;
 	}
+
+	/**
+	 * comment an assignment book
+	 *
+	 * @param  int $id
+	 * @return class AssignmentBookComment
+	 */
+	public function abComment($id)
+	{
+		$content = Request::input('content');
+		// begin the transaction
+		DB::beginTransaction();
+		// insert dbt
+		$assignmentBookComment = new \AssignmentBookComment();
+		$assignmentBookComment->uid = 32;
+		$assignmentBookComment->assignment_book_id = $id;
+		$assignmentBookComment->content = $content;
+		$assignmentBookComment->save();
+		// update dbt
+		$assignmentBook = \AssignmentBook::find($id);
+		$assignmentBook->comment += 1;
+		$assignmentBook->save();
+		// commit the transaction
+		DB::commit();
+
+		$user = User::find(41);
+		$assignmentBookComment->user_name = $user->username;
+		$assignmentBookComment->user_avatar = $user->avatar;
+		// return data
+		return $assignmentBookComment;
+	}
 }

@@ -34,4 +34,6 @@ class OpInfoController extends BaseController
 		DB::commit();
 		return $opInfoComment;
     }
+		// 临时存储数据库中查询的数据，在后面的foreach中使用
+		$tmp_data_arr = User::select('id', 'username', 'avatar')->get()->toArray();
 }

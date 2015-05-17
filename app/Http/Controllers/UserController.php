@@ -9,6 +9,7 @@ class UserController extends BaseController
 	// create a user
 	public function store()
 	{
+		var_dump(Hash::make('123'));exit;
 		$password              = \Request::input('password');
 		$password_confirmation = \Request::input('password_confirmation');
 		$email                 = \Request::input('email');
